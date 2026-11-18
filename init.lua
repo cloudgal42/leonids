@@ -1,4 +1,4 @@
-vim.cmd("source ~/.vimrc")
+-- vim.cmd("source ~/.vimrc")
 
 require("plugins.misc").setup()
 require("plugins.ufo").setup()
