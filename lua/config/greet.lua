@@ -56,6 +56,19 @@ local quote = {
 	opts = { hl = "comment", position = "center" }
 }
 
+local dashboard_image_path = heading_images[math.floor(math.random() * #heading_images) + 1]
+
+-- FIXME: This is probably hacky as hell. Try to find a better way 
+-- to pick a custom image each time Alpha is rendered or rerendered
+local headless_img_randomizer = {
+	type = "text",
+	val = function ()
+		dashboard_image_path = heading_images[math.floor(math.random() * #heading_images) + 1]
+		return ""
+	end,
+	opts = { position = "center" }
+}
+
 local function button(sc, txt, keybind, keybind_opts)
 	local sc_ = sc:gsub("%s", ""):gsub(leader, "<leader>")
 
@@ -110,9 +123,7 @@ dashboard.config.opts = {
       local row = 1
 
       local function render_dashboard_image()
-				local dashboard_image_path = heading_images[math.floor(math.random() * #heading_images) + 1]
-
-        if vim.api.nvim_get_current_buf() ~= alpha_buf then return end
+				if vim.api.nvim_get_current_buf() ~= alpha_buf then return end
 
         vim.schedule(function()
           if vim.api.nvim_get_current_buf() ~= alpha_buf or not vim.api.nvim_win_is_valid(win) then return end
@@ -182,7 +193,7 @@ dashboard.config.layout = {
 	quote,
 	{type = "padding", val = 1 },
 	dashboard.section.buttons,
-	-- dashboard.section.footer,
+	headless_img_randomizer
 }
 
 return dashboard.config
