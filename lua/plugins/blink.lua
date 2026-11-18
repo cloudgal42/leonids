@@ -1,11 +1,11 @@
 return {
-	setup = function ()		
+	setup = function ()
 		vim.pack.add({{
-			src = "https://github.com/saghen/blink.cmp", 
+			src = "https://github.com/saghen/blink.cmp",
 			version = vim.version.range("v1.*")
 		}})
 		require("blink.cmp").setup({
-			keymap = { preset = "super-tab" }
+			keymap = { preset = "enter" }
 		})
 	end
 }
