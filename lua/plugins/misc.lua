@@ -6,8 +6,8 @@ return {
 
 		vim.pack.add({ { src = "https://github.com/nvim-treesitter/nvim-treesitter" } })
 
-		vim.pack.add({{ 
-			src = "https://github.com/lewis6991/gitsigns.nvim", 
+		vim.pack.add({{
+			src = "https://github.com/lewis6991/gitsigns.nvim",
 			name = "gitsigns"
 		}})
 
@@ -17,7 +17,7 @@ return {
 		})
 
 		vim.pack.add({{
-			src = "https://github.com/m4xshen/autoclose.nvim", 
+			src = "https://github.com/m4xshen/autoclose.nvim",
 			name = "autoclose"
 		}})
 		require("autoclose").setup()
@@ -30,6 +30,9 @@ return {
 
 		vim.pack.add({{ src = "https://github.com/nvimdev/lspsaga.nvim" }})
 		require("lspsaga").setup()
+
+		vim.pack.add({{ src = "https://github.com/3rd/image.nvim" }})
+		require("image").setup()
 
 		-- TODO: See why this is throwing an error
 		-- vim.pack.add({ "https://codeberg.org/maivi/nivvie.nvim" })
