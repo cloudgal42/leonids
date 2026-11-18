@@ -9,7 +9,7 @@ require("plugins.neotree").setup()
 require("plugins.miniicons").setup()
 require("plugins.lualine").setup()
 require("plugins.indent-blankline").setup()
-
+require("plugins.alpha").setup()
 
 require("config.lsp").configure()
 require("config.keybinds").configure()
