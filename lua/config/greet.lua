@@ -108,7 +108,7 @@ end
 dashboard.section.buttons.val = {
 	button("e", "  New file", "<cmd>ene <CR>"),
 	button("SPC f f", "󰈞  Find file"),
-	button("SPC f h", "󰊄  Recently opened files"),
+	button("SPC f o", "󰊄  Recently opened files"),
 	button("SPC f g", "󰈬  Find word"),
 	-- dashboard.button("SPC f m", "  Jump to bookmarks"),
 	-- dashboard.button("SPC s l", "  Open last session"),
