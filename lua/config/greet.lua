@@ -6,6 +6,9 @@ local leader = "SPC"
 local heading_images = {
 	vim.fn.stdpath("config") .. "/assets/leoni_1.png",
 	vim.fn.stdpath("config") .. "/assets/leoni_2.png",
+	vim.fn.stdpath("config") .. "/assets/leoni_3.png",
+	vim.fn.stdpath("config") .. "/assets/leoni_4.png",
+	vim.fn.stdpath("config") .. "/assets/leoni_5.png",
 }
 
 local leoneed_members = {
