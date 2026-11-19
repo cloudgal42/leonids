@@ -2,7 +2,9 @@ return {
 	configure = function ()
 		vim.keymap.set("i", "<C-BS>", "<C-w>")
 
-		vim.keymap.set("n", "<A-e>", "<Cmd>lua vim.diagnostic.setqflist()<CR>")
+		vim.keymap.set("n", "<A-e>", function ()
+			require("trouble").toggle("diagnostics")
+		end)
 
 		-- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
 		vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
