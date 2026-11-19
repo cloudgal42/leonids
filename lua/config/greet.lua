@@ -67,7 +67,6 @@ local headless_img_randomizer = {
 	type = "text",
 	val = function ()
 		dashboard_image_path = vim.fn.stdpath("config") .. "/assets/" .. heading_images[math.floor(math.random() * #heading_images) + 1]
-
 		return ""
 	end,
 	opts = { position = "center" }
@@ -124,7 +123,7 @@ dashboard.config.opts = {
       local win = vim.api.nvim_get_current_win()
 
       local image_width = 47
-      local row = 1
+      local row = 0
 
       local function render_dashboard_image()
 				if vim.api.nvim_get_current_buf() ~= alpha_buf then return end
@@ -164,7 +163,7 @@ dashboard.config.opts = {
         end,
       })
 
-      vim.api.nvim_create_autocmd({ "CursorMoved", "BufEnter", "WinResized", "TextChanged", "VimResized" }, {
+      vim.api.nvim_create_autocmd({ "BufEnter", "WinResized", "TextChanged", "VimResized" }, {
         buffer = alpha_buf,
         group = alpha_image_group,
         callback = function()
@@ -193,7 +192,7 @@ dashboard.config.opts = {
 }
 
 dashboard.config.layout = {
-  { type = "padding", val = 17 },
+  { type = "padding", val = 16 },
 	quote,
 	{type = "padding", val = 1 },
 	dashboard.section.buttons,
