@@ -4,11 +4,11 @@ local if_nil = vim.F.if_nil
 local leader = "SPC"
 
 local heading_images = {
-	vim.fn.stdpath("config") .. "/assets/leoni_1.png",
-	vim.fn.stdpath("config") .. "/assets/leoni_2.png",
-	vim.fn.stdpath("config") .. "/assets/leoni_3.png",
-	vim.fn.stdpath("config") .. "/assets/leoni_4.png",
-	vim.fn.stdpath("config") .. "/assets/leoni_5.png",
+	"leoni_1.png",
+	"leoni_2.png",
+	"leoni_3.png",
+	"leoni_4.png",
+	"leoni_5.png",
 }
 
 local leoneed_members = {
@@ -59,14 +59,15 @@ local quote = {
 	opts = { hl = "comment", position = "center" }
 }
 
-local dashboard_image_path = heading_images[math.floor(math.random() * #heading_images) + 1]
+local dashboard_image_path = vim.fn.stdpath("config") .. "/assets/" .. heading_images[math.floor(math.random() * #heading_images) + 1]
 
 -- FIXME: This is probably hacky as hell. Try to find a better way 
 -- to pick a custom image each time Alpha is rendered or rerendered
 local headless_img_randomizer = {
 	type = "text",
 	val = function ()
-		dashboard_image_path = heading_images[math.floor(math.random() * #heading_images) + 1]
+		dashboard_image_path = vim.fn.stdpath("config") .. "/assets/" .. heading_images[math.floor(math.random() * #heading_images) + 1]
+
 		return ""
 	end,
 	opts = { position = "center" }
