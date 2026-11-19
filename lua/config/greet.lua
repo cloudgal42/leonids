@@ -193,7 +193,7 @@ dashboard.config.opts = {
 }
 
 dashboard.config.layout = {
-  { type = "padding", val = 18 },
+  { type = "padding", val = 17 },
 	quote,
 	{type = "padding", val = 1 },
 	dashboard.section.buttons,
