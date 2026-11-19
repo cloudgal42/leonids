@@ -116,79 +116,79 @@ dashboard.section.buttons.val = {
 -- Adapted from https://github.com/goolord/alpha-nvim/issues/15#issuecomment-4814163479
 dashboard.config.opts = {
 	setup = function()
-      local image = nil
-      local alpha_image_group = vim.api.nvim_create_augroup("AlphaImageRender", { clear = true })
+		local image = nil
+		local alpha_image_group = vim.api.nvim_create_augroup("AlphaImageRender", { clear = true })
 
-			local alpha_buf = vim.api.nvim_get_current_buf()
-      local win = vim.api.nvim_get_current_win()
+		local alpha_buf = vim.api.nvim_get_current_buf()
+		local win = vim.api.nvim_get_current_win()
 
-      local image_width = 47
-      local row = 0
+		local image_width = 47
+		local row = 0
 
-      local function render_dashboard_image()
+		local function render_dashboard_image()
+			if vim.api.nvim_get_current_buf() ~= alpha_buf then return end
+
+			vim.schedule(function()
+				if vim.api.nvim_get_current_buf() ~= alpha_buf or not vim.api.nvim_win_is_valid(win) then return end
+
+				local win_width = vim.api.nvim_win_get_width(win)
+				local col = math.floor((win_width - image_width) / 2)
+				if col < 0 then col = 0 end
+
+				if image then
+					pcall(function() image:clear() end)
+				end
+
+				image = require("image").from_file(dashboard_image_path, {
+					window = nil,
+					buffer = alpha_buf,
+					width = image_width,
+					x = col,
+					y = row,
+					with_virtual_padding = false,
+					clear_in_background = true,
+				})
+
+				if image then
+					pcall(function() image:render() end)
+				end
+			end)
+		end
+
+		vim.api.nvim_create_autocmd("User", {
+			pattern = "AlphaReady",
+			group = alpha_image_group,
+			callback = function()
+				render_dashboard_image()
+			end,
+		})
+
+		vim.api.nvim_create_autocmd({ "BufEnter", "WinResized", "TextChanged", "VimResized" }, {
+			buffer = alpha_buf,
+			group = alpha_image_group,
+			callback = function()
+				vim.opt.showtabline = 1
 				if vim.api.nvim_get_current_buf() ~= alpha_buf then return end
+				vim.cmd("redraw")
+				render_dashboard_image()
+			end,
+		})
 
-        vim.schedule(function()
-          if vim.api.nvim_get_current_buf() ~= alpha_buf or not vim.api.nvim_win_is_valid(win) then return end
+		vim.api.nvim_create_autocmd({ "BufLeave", "BufUnload", "BufHidden" }, {
+			buffer = alpha_buf,
+			callback = function()
+				vim.go.laststatus = 3
+				vim.opt.showtabline = 2
 
-          local win_width = vim.api.nvim_win_get_width(win)
-          local col = math.floor((win_width - image_width) / 2)
-          if col < 0 then col = 0 end
+				pcall(function() vim.api.nvim_del_augroup_by_id(alpha_image_group) end)
 
-          if image then
-            pcall(function() image:clear() end)
-          end
+				pcall(function() require("image").clear() end)
+				image = nil
 
-          image = require("image").from_file(dashboard_image_path, {
-            window = nil,
-            buffer = alpha_buf,
-            width = image_width,
-            x = col,
-            y = row,
-            with_virtual_padding = false,
-            clear_in_background = true,
-          })
-
-          if image then
-            pcall(function() image:render() end)
-          end
-        end)
-      end
-
-      vim.api.nvim_create_autocmd("User", {
-        pattern = "AlphaReady",
-        group = alpha_image_group,
-        callback = function()
-					render_dashboard_image()
-        end,
-      })
-
-      vim.api.nvim_create_autocmd({ "BufEnter", "WinResized", "TextChanged", "VimResized" }, {
-        buffer = alpha_buf,
-        group = alpha_image_group,
-        callback = function()
-					vim.opt.showtabline = 1
-          if vim.api.nvim_get_current_buf() ~= alpha_buf then return end
-          vim.cmd("redraw")
-          render_dashboard_image()
-        end,
-      })
-
-      vim.api.nvim_create_autocmd({ "BufLeave", "BufUnload", "BufHidden" }, {
-        buffer = alpha_buf,
-        callback = function()
-          vim.go.laststatus = 3
-          vim.opt.showtabline = 2
-
-					pcall(function() vim.api.nvim_del_augroup_by_id(alpha_image_group) end)
-
-          pcall(function() require("image").clear() end)
-          image = nil
-
-          vim.cmd("redraw!")
-        end,
-      })
-    end,
+				vim.cmd("redraw!")
+			end,
+		})
+	end,
 }
 
 dashboard.config.layout = {
