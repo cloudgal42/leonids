@@ -61,17 +61,6 @@ local quote = {
 
 local dashboard_image_path = vim.fn.stdpath("config") .. "/assets/" .. heading_images[math.floor(math.random() * #heading_images) + 1]
 
--- FIXME: This is probably hacky as hell. Try to find a better way 
--- to pick a custom image each time Alpha is rendered or rerendered
-local headless_img_randomizer = {
-	type = "text",
-	val = function ()
-		dashboard_image_path = vim.fn.stdpath("config") .. "/assets/" .. heading_images[math.floor(math.random() * #heading_images) + 1]
-		return ""
-	end,
-	opts = { position = "center" }
-}
-
 local function button(sc, txt, keybind, keybind_opts)
 	local sc_ = sc:gsub("%s", ""):gsub(leader, "<leader>")
 
@@ -196,7 +185,6 @@ dashboard.config.layout = {
 	quote,
 	{type = "padding", val = 1 },
 	dashboard.section.buttons,
-	headless_img_randomizer
 }
 
 return dashboard.config
