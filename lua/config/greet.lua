@@ -112,7 +112,7 @@ dashboard.config.opts = {
 		local win = vim.api.nvim_get_current_win()
 
 		local image_width = 47
-		local row = 0
+		local row = 1
 
 		local function render_dashboard_image()
 			if vim.api.nvim_get_current_buf() ~= alpha_buf then return end
@@ -123,6 +123,9 @@ dashboard.config.opts = {
 				local win_width = vim.api.nvim_win_get_width(win)
 				local col = math.floor((win_width - image_width) / 2)
 				if col < 0 then col = 0 end
+
+				local has_tabline = #vim.api.nvim_list_tabpages() > 1
+				if not has_tabline then row = 0 end
 
 				if image then
 					pcall(function() image:clear() end)
