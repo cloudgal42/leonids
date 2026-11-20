@@ -10,6 +10,7 @@ require("plugins.miniicons").setup()
 require("plugins.lualine").setup()
 require("plugins.indent-blankline").setup()
 require("plugins.alpha").setup()
+require("plugins.lsp-file-operations").setup()
 
 require("config.lsp").configure()
 require("config.keybinds").configure()

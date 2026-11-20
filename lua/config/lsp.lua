@@ -25,6 +25,16 @@ return {
 			'eslint.config.cts',
 		}
 
+		-- Set global defaults for all servers
+		vim.lsp.config("*", {
+			capabilities = vim.tbl_deep_extend(
+				"force",
+				vim.lsp.protocol.make_client_capabilities(),
+				-- ANY OTHER CAPABILITIES. e.g. for `blink.cmp`, etc.
+				require("lsp-file-operations").default_capabilities()
+			)
+		})
+
 		vim.lsp.config("lua_ls", {
 			settings = {
 				Lua = {

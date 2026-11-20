@@ -55,8 +55,7 @@
     },
     "neo-tree.nvim": {
       "rev": "f3f3bf73414e400cf9fc13fda50f00404a8f8ab1",
-      "src": "https://github.com/nvim-neo-tree/neo-tree.nvim",
-      "version": "3.0.0 - 4.0.0"
+      "src": "https://github.com/nvim-neo-tree/neo-tree.nvim"
     },
     "nivvie.nvim": {
       "rev": "39a74f2e6eee809e52084750c1e0b88d3706b470",
@@ -65,6 +64,10 @@
     "nui.nvim": {
       "rev": "10fc361835c856ba4233ef5ea135b919bf3dce97",
       "src": "https://github.com/MunifTanjim/nui.nvim"
+    },
+    "nvim-lsp-file-operations": {
+      "rev": "a7ac3f9c828c12ec022551a757217759c0d7f97c",
+      "src": "https://github.com/antosha417/nvim-lsp-file-operations"
     },
     "nvim-lspconfig": {
       "rev": "e1c6a5a45d95ad22cf55c874db2ff8ab969556f0",
