@@ -19,6 +19,7 @@ return {
 
 		vim.keymap.set("n", "<A-d>", "<Cmd> Lspsaga term_toggle<CR>")
 		vim.keymap.set("n", "<F18>", "<Cmd> Lspsaga rename<CR>")
+		vim.keymap.set("n", "<A-u>", "<Cmd> Lspsaga finder<CR>")
 
 		vim.keymap.set("n", "<A-1>", "<Cmd> Neotree toggle<CR>")
 
