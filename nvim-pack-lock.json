@@ -17,6 +17,10 @@
       "rev": "edefef779ab08ce1a4a404713e3012b0d202bd35",
       "src": "https://github.com/catppuccin/nvim"
     },
+    "conform.nvim": {
+      "rev": "016802de402556da54c36bd7359b441266b01cdd",
+      "src": "https://github.com/stevearc/conform.nvim"
+    },
     "evergarden": {
       "rev": "c8e5e7e67a36694e5d917b7065b26b59b8cb489f",
       "src": "https://codeberg.org/evergarden/nvim.git"

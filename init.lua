@@ -11,6 +11,7 @@ require("plugins.lualine").setup()
 require("plugins.indent-blankline").setup()
 require("plugins.alpha").setup()
 require("plugins.lsp-file-operations").setup()
+require("plugins.conform").setup()
 
 require("config.lsp").configure()
 require("config.keybinds").configure()
