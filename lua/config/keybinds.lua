@@ -1,20 +1,20 @@
 return {
-	configure = function ()
+	configure = function()
 		vim.keymap.set("i", "<C-BS>", "<C-w>")
 
-		vim.keymap.set("n", "<A-e>", function ()
+		vim.keymap.set("n", "<A-e>", function()
 			require("trouble").toggle("diagnostics")
 		end)
 
-		vim.keymap.set("n", "<leader>fm", function ()
-			require("conform").format()	
+		vim.keymap.set("n", "<leader>fm", function()
+			require("conform").format()
 		end)
 
 		-- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
-		vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-		vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+		vim.keymap.set("n", "zR", require("ufo").openAllFolds)
+		vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
 
-		vim.keymap.set('n', 'K', '<cmd>Lspsaga hover_doc <CR>')
+		vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc <CR>")
 		-- Normal mode: Code action
 		vim.keymap.set("n", "<A-CR>", "<cmd>Lspsaga code_action<CR>", { desc = "Lspsaga code action" })
 
@@ -27,11 +27,15 @@ return {
 
 		vim.keymap.set("n", "<A-1>", "<Cmd> Neotree toggle<CR>")
 
-		local builtin = require('telescope.builtin')
-		vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
-		vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
-		vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
-		vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+		local builtin = require("telescope.builtin")
+		vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
+		vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
+		vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
+		vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
 		vim.keymap.set("n", "<leader>fo", builtin.oldfiles, { desc = "Telescope old files" })
-	end
+
+		vim.keymap.set("n", "<leader>ss", "<cmd>Nivvie save<cr>")
+		-- TODO: Change this to Nivvie load once bumped to the latest version
+		vim.keymap.set("n", "<leader>sl", "<cmd>Nivvie restore<cr>")
+	end,
 }

@@ -40,7 +40,5 @@ return {
 		vim.pack.add({{ src = "https://github.com/folke/trouble.nvim" }})
 		require("trouble").setup()
 
-		-- TODO: See why this is throwing an error
-		-- vim.pack.add({ "https://codeberg.org/maivi/nivvie.nvim" })
-	end
+		end
 }

@@ -62,8 +62,9 @@
       "src": "https://github.com/nvim-neo-tree/neo-tree.nvim"
     },
     "nivvie.nvim": {
-      "rev": "39a74f2e6eee809e52084750c1e0b88d3706b470",
-      "src": "https://codeberg.org/maivi/nivvie.nvim"
+      "rev": "7ac7630e7d2079a39d91d347eeece98993deb776",
+      "src": "https://codeberg.org/maivi/nivvie.nvim",
+      "version": "'7ac7630e7d2079a39d91d347eeece98993deb776'"
     },
     "nui.nvim": {
       "rev": "10fc361835c856ba4233ef5ea135b919bf3dce97",
@@ -95,7 +96,7 @@
     },
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
-      "src": "https://github.com/nvim-lua/plenary.nvim"
+      "src": "nvim-lua/plenary.nvim"
     },
     "promise-async": {
       "rev": "119e8961014c9bfaf1487bf3c2a393d254f337e2",
