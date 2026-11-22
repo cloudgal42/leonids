@@ -7,6 +7,11 @@ return {
 					NeoTreeRootName = { fg = C.text },
 					NeoTreeDirectoryName = { fg = C.text },
 					NeoTreeDirectoryIcon = { fg = C.mauve },
+					SagaActionTitle = { bg = C.lavender, fg = C.mantle },
+					SagaButton = { fg = C.lavender },
+					SagaTitle = { fg = C.lavender },
+					CodeActionText = { fg = C.subtext1 },
+					SagaSelect = { fg = C.lavender }
 				}
 			end,
 			integrations = {
