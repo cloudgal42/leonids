@@ -105,6 +105,10 @@ local function button(sc, txt, keybind, keybind_opts)
 	}
 end
 
+local function is_tall_window()
+	return vim.api.nvim_win_get_height(0) >= 28
+end
+
 local quoteBlock = {
 	type = "group",
 	val = {
@@ -128,7 +132,7 @@ dashboard.section.buttons.val = {
 	button("SPC f o", "󰊄  Recently opened files"),
 	button("SPC f g", "󰈬  Find word"),
 	-- dashboard.button("SPC f m", "  Jump to bookmarks"),
-	-- dashboard.button("SPC s l", "  Open last session"),
+	dashboard.button("SPC s l", "  Open last session"),
 }
 
 -- Adapted from https://github.com/goolord/alpha-nvim/issues/15#issuecomment-4814163479
@@ -140,13 +144,14 @@ dashboard.config.opts = {
 		local alpha_buf = vim.api.nvim_get_current_buf()
 		local win = vim.api.nvim_get_current_win()
 
-		local image_width = 47
 		local row = 1
 
 		local function render_dashboard_image()
 			if vim.api.nvim_get_current_buf() ~= alpha_buf then
 				return
 			end
+
+			local image_width = is_tall_window() and 47 or 40
 
 			vim.schedule(function()
 				if vim.api.nvim_get_current_buf() ~= alpha_buf or not vim.api.nvim_win_is_valid(win) then
@@ -201,6 +206,8 @@ dashboard.config.opts = {
 			group = alpha_image_group,
 			callback = function()
 				vim.opt.showtabline = 1
+				-- Set scroll position back to 0 to avoid image clipping with rest of greet
+				vim.api.nvim_win_set_cursor(0, {1, 0})
 				if vim.api.nvim_get_current_buf() ~= alpha_buf then
 					return
 				end
@@ -231,7 +238,16 @@ dashboard.config.opts = {
 }
 
 dashboard.config.layout = {
-	{ type = "padding", val = 16 },
+	{
+		type = "padding",
+		val = function()
+			if not is_tall_window() then
+				return 13
+			else
+				return 16
+			end
+		end,
+	},
 	quoteBlock,
 	{ type = "padding", val = 1 },
 	dashboard.section.buttons,
