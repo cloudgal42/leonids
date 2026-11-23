@@ -11,7 +11,9 @@ return {
 					SagaButton = { fg = C.lavender },
 					SagaTitle = { fg = C.lavender },
 					CodeActionText = { fg = C.subtext1 },
-					SagaSelect = { fg = C.lavender }
+					SagaSelect = { fg = C.lavender },
+					NeoTreeTitleBar = { bg = C.lavender },
+					NeoTreeFloatBorder = { fg = C.lavender }
 				}
 			end,
 			integrations = {
